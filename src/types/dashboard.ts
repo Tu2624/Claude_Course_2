@@ -5,7 +5,6 @@ export interface KpiCard {
   rawValue: number
   change: string
   trend: 'up' | 'down' | 'neutral'
-  icon: string
 }
 
 export interface ChartDataPoint {

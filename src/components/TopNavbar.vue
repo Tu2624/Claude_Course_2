@@ -4,7 +4,7 @@ defineEmits<{ toggleSidebar: [] }>()
 </script>
 
 <template>
-  <header class="sticky top-0 z-10 flex h-16 items-center gap-4 border-b border-gray-200 bg-white px-4 sm:px-6">
+  <header class="sticky top-0 z-10 flex h-16 items-center gap-4 border-b border-slate-200/60 bg-white/70 backdrop-blur-xl px-4 sm:px-6 shadow-[0_4px_20px_-12px_rgba(0,0,0,0.05)]">
     <!-- Hamburger (mobile only) -->
     <button
       class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors lg:hidden"
@@ -60,29 +60,6 @@ defineEmits<{ toggleSidebar: [] }>()
         </svg>
         Search…
       </div>
-
-      <!-- Notifications -->
-      <button class="relative flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors">
-        <svg
-          class="h-5 w-5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-          />
-        </svg>
-        <span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-indigo-500" />
-      </button>
-
-      <!-- Avatar -->
-      <button class="h-9 w-9 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-semibold text-sm hover:ring-2 hover:ring-indigo-300 transition-all">
-        JD
-      </button>
     </div>
   </header>
 </template>

@@ -13,8 +13,8 @@ function toRelative(iso: string): string {
 </script>
 
 <template>
-  <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-    <p class="mb-4 text-sm font-semibold text-gray-700">
+  <div class="rounded-3xl border border-slate-200/60 bg-white/80 p-6 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.08)] backdrop-blur-md">
+    <p class="mb-5 text-base font-bold tracking-tight text-slate-800">
       {{ title ?? 'Recent Activity' }}
     </p>
     <ul class="space-y-3">

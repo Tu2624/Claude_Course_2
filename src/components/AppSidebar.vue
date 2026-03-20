@@ -3,11 +3,11 @@ defineProps<{ open: boolean }>()
 defineEmits<{ close: [] }>()
 
 const navItems = [
-  { label: 'Dashboard', icon: '🏠' },
-  { label: 'Analytics', icon: '📊' },
-  { label: 'Projects', icon: '📁' },
-  { label: 'Team', icon: '👥' },
-  { label: 'Settings', icon: '⚙️' },
+  { label: 'Dashboard', path: '/' },
+  { label: 'Analytics', path: '/analytics' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Team', path: '/team' },
+  { label: 'Settings', path: '/settings' },
 ]
 </script>
 
@@ -24,7 +24,7 @@ const navItems = [
   <!-- Sidebar -->
   <aside
     :class="[
-      'fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-white border-r border-gray-200 shadow-sm',
+      'fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-white/70 backdrop-blur-xl border-r border-slate-200/60 shadow-[4px_0_24px_-12px_rgba(0,0,0,0.1)]',
       'transition-transform duration-300 ease-in-out',
       'lg:translate-x-0 lg:static lg:z-auto lg:shadow-none',
       open ? 'translate-x-0' : '-translate-x-full',
@@ -39,34 +39,17 @@ const navItems = [
     </div>
 
     <!-- Nav items -->
-    <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-1">
-      <a
+    <nav class="flex-1 overflow-y-auto px-4 py-6 space-y-1.5">
+      <router-link
         v-for="item in navItems"
         :key="item.label"
-        href="#"
-        class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-700 transition-colors group"
+        :to="item.path"
+        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-white hover:text-indigo-600 hover:shadow-sm hover:ring-1 hover:ring-slate-200/50 transition-all duration-200 group"
+        active-class="bg-white text-indigo-600 shadow-sm ring-1 ring-slate-200/50"
       >
-        <span class="text-base leading-none">{{ item.icon }}</span>
         {{ item.label }}
-      </a>
+      </router-link>
     </nav>
-
-    <!-- User footer -->
-    <div class="border-t border-gray-200 px-4 py-4">
-      <div class="flex items-center gap-3">
-        <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-semibold text-sm">
-          JD
-        </div>
-        <div class="min-w-0">
-          <p class="truncate text-sm font-medium text-gray-900">
-            Jane Doe
-          </p>
-          <p class="truncate text-xs text-gray-500">
-            jane@example.com
-          </p>
-        </div>
-      </div>
-    </div>
   </aside>
 </template>
 

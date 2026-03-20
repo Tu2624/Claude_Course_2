@@ -12,7 +12,10 @@
       "Bash(git -C C:/Users/ADMIN diff --name-only)",
       "Bash(git:*)",
       "Bash(find C:UsersADMINDocumentsClaude_Course_2 -not -path */node_modules/* -type f)",
-      "Bash(npx vue-tsc:*)"
+      "Bash(npx vue-tsc:*)",
+      "Bash(find:*)",
+      "Bash(find /c/Users/ADMIN/AppData/Roaming/ -maxdepth 2 -type f \\\\\\(-name *mcp* -o -name claude_desktop_config.json \\\\\\))",
+      "Bash(xargs ls:*)"
     ]
   }
 }

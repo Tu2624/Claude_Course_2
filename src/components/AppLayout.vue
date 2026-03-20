@@ -7,7 +7,7 @@ const sidebarOpen = ref(false)
 </script>
 
 <template>
-  <div class="flex h-screen overflow-hidden bg-gray-50">
+  <div class="flex h-screen overflow-hidden bg-slate-50">
     <!-- Sidebar -->
     <AppSidebar
       :open="sidebarOpen"
