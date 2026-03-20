@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npx create-vite@latest . --template vue-ts --force)",
+      "Read(//c/Users/ADMIN/Documents/**)",
+      "Bash(npx create-vite@latest vite_temp --template vue-ts)",
+      "Bash(cp:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(npx eslint:*)",
+      "Bash(git -C C:/Users/ADMIN diff --name-only)",
+      "Bash(git:*)"
+    ]
+  }
+}
