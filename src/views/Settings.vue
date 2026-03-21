@@ -3,15 +3,16 @@ import { ref, onMounted } from 'vue'
 
 const config = ref<any>(null)
 const isLoading = ref(true)
-const error = ref<string | null>(null)
+
+const fallback = { notifications: true, theme: 'Light', language: 'English', timezone: 'UTC+7' }
 
 onMounted(async () => {
   try {
     const res = await fetch('http://localhost:3000/api/settings')
     if (!res.ok) throw new Error('API Error')
     config.value = await res.json()
-  } catch (e: any) {
-    error.value = e.message
+  } catch {
+    config.value = fallback
   } finally {
     isLoading.value = false
   }
@@ -31,10 +32,6 @@ const saveSettings = () => {
     
     <div v-if="isLoading" class="flex justify-center items-center py-24">
       <div class="animate-spin rounded-full h-12 w-12 border-b-4 border-indigo-600 border-t-transparent"></div>
-    </div>
-    
-    <div v-else-if="error" class="bg-rose-50 text-rose-600 p-6 rounded-2xl shadow-sm border border-rose-100">
-      Error: {{ error }} - Please ensure the backend server is running.
     </div>
     
     <div v-else class="rounded-3xl border border-slate-200/60 bg-white/80 p-8 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.08)] backdrop-blur-md">

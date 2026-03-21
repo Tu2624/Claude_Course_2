@@ -3,15 +3,21 @@ import { ref, onMounted } from 'vue'
 
 const projects = ref<any[]>([])
 const isLoading = ref(true)
-const error = ref<string | null>(null)
+
+const fallback = [
+  { id: 'p1', name: 'Website Redesign', status: 'In Progress', progress: 65, dueDate: '2026-04-15' },
+  { id: 'p2', name: 'Mobile App Launch', status: 'Planning', progress: 15, dueDate: '2026-06-01' },
+  { id: 'p3', name: 'Database Migration', status: 'Completed', progress: 100, dueDate: '2026-02-28' },
+  { id: 'p4', name: 'Marketing Campaign Q3', status: 'In Progress', progress: 40, dueDate: '2026-05-10' },
+]
 
 onMounted(async () => {
   try {
     const res = await fetch('http://localhost:3000/api/projects')
     if (!res.ok) throw new Error('API Error')
     projects.value = await res.json()
-  } catch (e: any) {
-    error.value = e.message
+  } catch {
+    projects.value = fallback
   } finally {
     isLoading.value = false
   }
@@ -27,10 +33,6 @@ onMounted(async () => {
     
     <div v-if="isLoading" class="flex justify-center items-center py-24">
       <div class="animate-spin rounded-full h-12 w-12 border-b-4 border-indigo-600 border-t-transparent"></div>
-    </div>
-    
-    <div v-else-if="error" class="bg-rose-50 text-rose-600 p-6 rounded-2xl shadow-sm border border-rose-100">
-      Error: {{ error }} - Please ensure the backend server is running.
     </div>
     
     <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6">

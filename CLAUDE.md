@@ -42,10 +42,13 @@ src/
 ├── stores/       # Pinia stores (dashboardStore.ts); tests in stores/__tests__/
 ├── data/         # Static mock data (mockData.ts)
 ├── types/        # Shared TypeScript interfaces (dashboard.ts)
-└── composables/  # Reusable Composition API logic
+├── router/       # Vue Router config (index.ts)
+└── composables/  # Reusable Composition API logic (empty — add here when needed)
 ```
 
 ## Architecture
+
+**Routing** — `src/router/index.ts` uses `createWebHistory`. `BentoDashboard` is eagerly loaded at `/`; all other views (`Analytics`, `Projects`, `Team`, `Settings`) are lazy-loaded via dynamic `import()`.
 
 **Layout shell** — `AppLayout.vue` owns sidebar toggle state and exposes a `<slot>` inside `<main>`. Page views slot directly into it; they do not manage layout state.
 

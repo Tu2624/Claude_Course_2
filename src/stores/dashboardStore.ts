@@ -1,7 +1,12 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { Transaction, ActivityItem, KpiCard, GoalItem } from '../types/dashboard'
-import { transactions as seedTransactions } from '../data/mockData'
+import {
+  transactions as seedTransactions,
+  kpiCards as mockKpiCards,
+  activityFeed as mockActivityFeed,
+  goals as mockGoals,
+} from '../data/mockData'
 
 export const useDashboardStore = defineStore('dashboard', () => {
   const transactions = ref<Transaction[]>([...seedTransactions])
@@ -23,8 +28,10 @@ export const useDashboardStore = defineStore('dashboard', () => {
       activityFeed.value = data.activityFeed
       goals.value = data.goals
     } catch (err: any) {
-      error.value = err.message || 'Failed to fetch dashboard data'
-      console.error(err)
+      console.warn('Backend unavailable, falling back to mock data:', err)
+      kpiCards.value = mockKpiCards
+      activityFeed.value = mockActivityFeed
+      goals.value = mockGoals
     } finally {
       isLoading.value = false
     }

@@ -15,7 +15,8 @@
       "Bash(npx vue-tsc:*)",
       "Bash(find:*)",
       "Bash(find /c/Users/ADMIN/AppData/Roaming/ -maxdepth 2 -type f \\\\\\(-name *mcp* -o -name claude_desktop_config.json \\\\\\))",
-      "Bash(xargs ls:*)"
+      "Bash(xargs ls:*)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx|vue|json|md|db|sqlite\\)$\")"
     ]
   }
 }
